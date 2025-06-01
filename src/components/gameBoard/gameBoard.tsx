@@ -1,40 +1,49 @@
 import Square from "../square/square.tsx";
 import styles from "./styles.module.css";
-import { useState } from "react";
-import { generateInitialBoard, isThereNumbersToSum, isTherePlaceToMove } from "./utils.ts";
+import { useEffect, useState } from "react";
+import { addNewNumbers, generateInitialBoard, rotateClockwise, sumTable } from "./utils.ts";
 
 function GameBoard() {
   const [board, setBoard] = useState(generateInitialBoard());
 
-  document.addEventListener("keydown", (e) => {
-    const updatedBoard = [...board.map((row) => [...row])];
+  // TODO: if no move can be done, ignore key press
+  useEffect(() => {
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (!["w", "a", "s", "d"].includes(e.key)) return;
 
-    if (e.key === "d") {
-      updatedBoard.forEach((row, rowIndex) => {
-        do {
-          for (let i = row.length - 1; i >= 0; i--) {
-            if (i === 3) {
-              updatedBoard[rowIndex][i] = row[i];
-              continue;
-            }
+      let updatedBoard = [...board.map((row) => [...row])];
 
-            // TODO: don't multiply 0
-            if (updatedBoard[rowIndex][i] === updatedBoard[rowIndex][i + 1]) {
-              updatedBoard[rowIndex][i + 1] = updatedBoard[rowIndex][i] * 2;
-              updatedBoard[rowIndex][i] = 0;
-            } else if (updatedBoard[rowIndex][i + 1] === 0) {
-              updatedBoard[rowIndex][i + 1] = updatedBoard[rowIndex][i];
-              updatedBoard[rowIndex][i] = 0;
-            } else {
-              updatedBoard[rowIndex][i] = row[i];
-            }
-          }
-        } while (isTherePlaceToMove(row) || isThereNumbersToSum(row));
-      });
+      if (e.key === "d") {
+        updatedBoard = sumTable(updatedBoard);
+      }
 
+      if (e.key === "a") {
+        updatedBoard = sumTable(updatedBoard.map((row) => [...row].reverse()));
+        updatedBoard = updatedBoard.map((row) => [...row].reverse());
+      }
+
+      if (e.key === "w") {
+        const rotatedBoard = rotateClockwise(updatedBoard);
+
+        updatedBoard = sumTable(rotatedBoard);
+        updatedBoard = rotateClockwise(rotateClockwise(rotateClockwise(updatedBoard)));
+      }
+
+      if (e.key === "s") {
+        const rotatedBoard = rotateClockwise(rotateClockwise(rotateClockwise(updatedBoard)));
+
+        updatedBoard = sumTable(rotatedBoard);
+        updatedBoard = rotateClockwise(updatedBoard);
+      }
+
+      updatedBoard = addNewNumbers(updatedBoard);
       setBoard(updatedBoard);
-    }
-  });
+    };
+
+    document.addEventListener("keydown", handleKeydown);
+
+    return () => document.removeEventListener("keydown", handleKeydown);
+  }, [board]);
 
   return (
     <div>
