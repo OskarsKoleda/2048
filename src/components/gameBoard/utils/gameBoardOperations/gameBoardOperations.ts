@@ -74,3 +74,7 @@ const areThereNumbersToSum = (row: number[]): boolean => {
 
   return false;
 };
+
+export const hasBoardChanged = (initialBoard: number[][], modifiedBoard: number[][]): boolean => {
+  return initialBoard.every((row, i) => row.every((cell, j) => cell === modifiedBoard[i][j]));
+};
