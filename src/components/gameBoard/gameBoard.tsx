@@ -1,7 +1,15 @@
 import Square from "../square/square.tsx";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
-import { addNewNumbers, generateInitialBoard, rotateClockwise, sumTable } from "./utils.ts";
+import {
+  rotateClockwise,
+  rotateCounterClockwise,
+} from "./utils/matrixOperations/matrixOperations.ts";
+import {
+  addNewNumbers,
+  generateInitialBoard,
+} from "./utils/gameBoardPopulation/gameBoardPopulation.ts";
+import { isThereSpaceOnBoard, sumTable } from "./utils/gameBoardOperations/gameBoardOperations.ts";
 
 function GameBoard() {
   const [board, setBoard] = useState(generateInitialBoard());
@@ -26,7 +34,7 @@ function GameBoard() {
         const rotatedBoard = rotateClockwise(updatedBoard);
 
         updatedBoard = sumTable(rotatedBoard);
-        updatedBoard = rotateClockwise(rotateClockwise(rotateClockwise(updatedBoard)));
+        updatedBoard = rotateCounterClockwise(updatedBoard);
       }
 
       if (e.key === "s") {
@@ -36,7 +44,10 @@ function GameBoard() {
         updatedBoard = rotateClockwise(updatedBoard);
       }
 
-      updatedBoard = addNewNumbers(updatedBoard);
+      if (isThereSpaceOnBoard(updatedBoard)) {
+        updatedBoard = addNewNumbers(updatedBoard);
+      }
+
       setBoard(updatedBoard);
     };
 
