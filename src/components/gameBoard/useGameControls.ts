@@ -66,7 +66,7 @@ const useGameControls = ({ board, setBoard }: BoardOperations) => {
 
       gameBoard = moveHandlers[e.key](gameBoard);
 
-      if (isThereSpaceOnBoard(gameBoard) && !hasBoardChanged(board, gameBoard)) {
+      if (isThereSpaceOnBoard(gameBoard) && hasBoardChanged(board, gameBoard)) {
         gameBoard = addNewNumbers(gameBoard);
         setBoard(gameBoard);
       }

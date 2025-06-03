@@ -1,7 +1,3 @@
-export const isThereSpaceOnBoard = (board: number[][]) => {
-  return board.flat().includes(0);
-};
-
 export const sumTable = (boardToCalculate: number[][]): number[][] => {
   const nullMatrix = Array.from({ length: boardToCalculate.length }, () =>
     Array(boardToCalculate.length).fill(0),
@@ -18,14 +14,13 @@ export const sumTable = (boardToCalculate: number[][]): number[][] => {
 };
 
 const sumRow = (rowToSum: number[]): number[] => {
-  let rowUnderCalculations = sumAdjacentCells(rowToSum);
-  rowUnderCalculations = moveNumbers(rowUnderCalculations);
-  rowUnderCalculations = sumAdjacentCells(rowUnderCalculations);
+  const moved = moveNumbers(rowToSum);
+  const summed = sumAdjacentCells(moved);
 
-  return rowUnderCalculations;
+  return moveNumbers(summed);
 };
 
-const sumAdjacentCells = (row: number[]) => {
+const moveNumbers = (row: number[]) => {
   const rowToSum = [...row];
 
   while (isThereSpaceInRow(rowToSum)) {
@@ -40,21 +35,6 @@ const sumAdjacentCells = (row: number[]) => {
   return rowToSum;
 };
 
-const moveNumbers = (row: number[]) => {
-  const rowToMove = [...row];
-
-  if (areThereNumbersToSum(rowToMove)) {
-    for (let i = rowToMove.length - 1; i >= 0; i--) {
-      if (rowToMove[i] === rowToMove[i + 1]) {
-        rowToMove[i + 1] = rowToMove[i] * 2;
-        rowToMove[i] = 0;
-      }
-    }
-  }
-
-  return rowToMove;
-};
-
 const isThereSpaceInRow = (row: number[]): boolean => {
   for (let i = 0; i < row.length - 1; i++) {
     if (row[i] !== 0 && row[i + 1] === 0) {
@@ -65,16 +45,45 @@ const isThereSpaceInRow = (row: number[]): boolean => {
   return false;
 };
 
-const areThereNumbersToSum = (row: number[]): boolean => {
-  for (let i = 0; i <= row.length - 2; i++) {
-    if (row[i] !== 0 && row[i] === row[i + 1]) {
-      return true;
+const sumAdjacentCells = (row: number[]) => {
+  const rowToMove = [...row];
+
+  // if (areThereNumbersToSum(rowToMove)) {
+  for (let i = rowToMove.length - 1; i >= 0; i--) {
+    if (rowToMove[i] === rowToMove[i + 1]) {
+      rowToMove[i + 1] = rowToMove[i] * 2;
+      rowToMove[i] = 0;
     }
   }
+  // }
 
-  return false;
+  return rowToMove;
 };
 
+// const areThereNumbersToSum = (row: number[]): boolean => {
+//   for (let i = 0; i <= row.length - 2; i++) {
+//     if (row[i] !== 0 && row[i] === row[i + 1]) {
+//       return true;
+//     }
+//   }
+//
+//   return false;
+// };
+
 export const hasBoardChanged = (initialBoard: number[][], modifiedBoard: number[][]): boolean => {
-  return initialBoard.every((row, i) => row.every((cell, j) => cell === modifiedBoard[i][j]));
+  if (initialBoard.length !== modifiedBoard.length) {
+    return true;
+  }
+
+  return !initialBoard.every((row, i) => {
+    if (row.length !== modifiedBoard[i]?.length) {
+      return false;
+    }
+
+    return row.every((cell, j) => cell === modifiedBoard[i][j]);
+  });
+};
+
+export const isThereSpaceOnBoard = (board: number[][]) => {
+  return board.flat().includes(0);
 };
