@@ -1,9 +1,50 @@
 import type { BoardWithPoints } from "../../../../common/types.ts";
+import { rotateClockwise } from "../matrixOperations/matrixOperations.ts";
 
 interface RowWithPoints {
   summed: number[];
   points: number;
 }
+
+export const isThereMoveLeft = (board: number[][]): boolean => {
+  let boardToRotate = board.map((row) => [...row]);
+
+  for (let i = 0; i < 4; i++) {
+    const thereIsPlaceToMove = boardToRotate.some((row) => canRowBeMoved(row));
+
+    if (thereIsPlaceToMove) {
+      return true;
+    }
+
+    const thereAreNumbersToSum = boardToRotate.some((row) => areThereNumbersToSum(row));
+
+    if (thereAreNumbersToSum) {
+      return true;
+    }
+
+    boardToRotate = rotateClockwise(boardToRotate);
+  }
+
+  return false;
+};
+
+export const hasBoardChanged = (initialBoard: number[][], modifiedBoard: number[][]): boolean => {
+  if (initialBoard.length !== modifiedBoard.length) {
+    return true;
+  }
+
+  return !initialBoard.every((row, i) => {
+    if (row.length !== modifiedBoard[i]?.length) {
+      return false;
+    }
+
+    return row.every((cell, j) => cell === modifiedBoard[i][j]);
+  });
+};
+
+export const isThereSpaceOnBoard = (board: number[][]) => {
+  return board.flat().includes(0);
+};
 
 export const sumTable = (boardToCalculate: number[][]): BoardWithPoints => {
   const summedBoard = Array.from({ length: boardToCalculate.length }, () =>
@@ -34,7 +75,7 @@ const sumRow = (rowToSum: number[]): RowWithPoints => {
 const moveNumbers = (row: number[]) => {
   const rowToSum = [...row];
 
-  while (isThereSpaceInRow(rowToSum)) {
+  while (canRowBeMoved(rowToSum)) {
     for (let i = rowToSum.length - 1; i >= 0; i--) {
       if (rowToSum[i + 1] === 0) {
         rowToSum[i + 1] = rowToSum[i];
@@ -46,7 +87,7 @@ const moveNumbers = (row: number[]) => {
   return rowToSum;
 };
 
-const isThereSpaceInRow = (row: number[]): boolean => {
+const canRowBeMoved = (row: number[]): boolean => {
   for (let i = 0; i < row.length - 1; i++) {
     if (row[i] !== 0 && row[i + 1] === 0) {
       return true;
@@ -75,30 +116,12 @@ const sumAdjacentCells = (row: number[]): RowWithPoints => {
   };
 };
 
-// const areThereNumbersToSum = (row: number[]): boolean => {
-//   for (let i = 0; i <= row.length - 2; i++) {
-//     if (row[i] !== 0 && row[i] === row[i + 1]) {
-//       return true;
-//     }
-//   }
-//
-//   return false;
-// };
-
-export const hasBoardChanged = (initialBoard: number[][], modifiedBoard: number[][]): boolean => {
-  if (initialBoard.length !== modifiedBoard.length) {
-    return true;
+const areThereNumbersToSum = (row: number[]): boolean => {
+  for (let i = 0; i <= row.length - 2; i++) {
+    if (row[i] !== 0 && row[i] === row[i + 1]) {
+      return true;
+    }
   }
 
-  return !initialBoard.every((row, i) => {
-    if (row.length !== modifiedBoard[i]?.length) {
-      return false;
-    }
-
-    return row.every((cell, j) => cell === modifiedBoard[i][j]);
-  });
-};
-
-export const isThereSpaceOnBoard = (board: number[][]) => {
-  return board.flat().includes(0);
+  return false;
 };

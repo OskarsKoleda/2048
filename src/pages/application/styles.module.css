@@ -2,33 +2,3 @@
     font-size: 3rem;
     margin: 0;
 }
-
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu button {
-    height: 2rem;
-    padding: .5rem 1rem;
-    border-radius: 4px;
-    border: 1px solid #000;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.menu button:hover {
-    background-color: #000;
-    color: #fff;
-    transition: all .3s;
-}
-
-.menu button:active {
-    transform: scale(.95);
-}
-
-.menu button:focus {
-    outline: none;
-}
-

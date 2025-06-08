@@ -1,24 +1,40 @@
 import styles from "./styles.module.css";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { generateInitialBoard } from "./utils/gameBoardPopulation/gameBoardPopulation.ts";
 import useGameControls from "./hooks/useGameControls.ts";
 import { GameBoard } from "../../components/GameBoard/GameBoard.tsx";
 import { Menu } from "../../components/Menu/Menu.tsx";
+import { Modal } from "../../components/Modal/Modal.tsx";
+import { isThereMoveLeft } from "./utils/gameBoardOperations/gameBoardOperations.ts";
 
 function Application() {
   const [board, setBoard] = useState(generateInitialBoard());
   const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   const updateScore = useCallback((score: number) => setScore((prev) => prev + score), [setScore]);
-
-  useGameControls({ board, setBoard, setScore: updateScore });
+  const closeModal = useCallback(() => setGameOver(false), [setGameOver]);
 
   const resetBoard = () => {
     setBoard(generateInitialBoard());
   };
 
+  const restartGame = () => {
+    setGameOver(false);
+    resetBoard();
+  };
+
+  useGameControls({ board, setBoard, setScore: updateScore });
+
+  useEffect(() => {
+    setGameOver(!isThereMoveLeft(board));
+  }, [board]);
+
   return (
     <>
+      <Modal gameOver={gameOver} onClose={closeModal} restartGame={restartGame}>
+        {score}
+      </Modal>
       <h1 className={styles.title}>2048</h1>
       <Menu score={score} resetBoard={resetBoard} />
       <GameBoard board={board} />

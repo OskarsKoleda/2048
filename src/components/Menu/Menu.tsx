@@ -1,4 +1,4 @@
-import styles from "../../pages/application/styles.module.css";
+import styles from "./styles.module.css";
 
 interface MenuProps {
   score: number;
