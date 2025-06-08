@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { hasBoardChanged, isThereSpaceOnBoard, sumTable } from "./gameBoardOperations.ts";
 
-// AI-generated tests
 describe("tableOperationsUtils", () => {
   describe("isThereSpaceOnBoard", () => {
     it("should return true when there is space (0) on the board", () => {
@@ -24,34 +23,59 @@ describe("tableOperationsUtils", () => {
   });
 
   describe("sumTable", () => {
-    it("should correctly sum adjacent numbers in a table", () => {
+    it("should correctly sum adjacent numbers in a table and calculate points", () => {
       const input = [
         [2, 2, 0],
         [2, 2, 4],
         [0, 4, 4],
       ];
 
-      const expected = [
-        [0, 0, 4],
-        [0, 4, 4],
-        [0, 0, 8],
-      ];
+      const expected = {
+        summedBoard: [
+          [0, 0, 4],
+          [0, 4, 4],
+          [0, 0, 8],
+        ],
+        points: 16,
+      };
 
       expect(sumTable(input)).toEqual(expected);
     });
 
-    it("should handle empty spaces correctly", () => {
+    it("should handle empty spaces correctly and calculate points as zero", () => {
       const input = [
         [0, 0, 2],
         [0, 2, 0],
         [2, 0, 0],
       ];
 
-      const expected = [
-        [0, 0, 2],
-        [0, 0, 2],
-        [0, 0, 2],
+      const expected = {
+        summedBoard: [
+          [0, 0, 2],
+          [0, 0, 2],
+          [0, 0, 2],
+        ],
+        points: 0,
+      };
+
+      expect(sumTable(input)).toEqual(expected);
+    });
+
+    it("should calculate points when multiple rows are summed", () => {
+      const input = [
+        [2, 2, 2, 2],
+        [4, 4, 0, 0],
+        [8, 0, 8, 0],
       ];
+
+      const expected = {
+        summedBoard: [
+          [0, 0, 4, 4],
+          [0, 0, 0, 8],
+          [0, 0, 0, 16],
+        ],
+        points: 32,
+      };
 
       expect(sumTable(input)).toEqual(expected);
     });

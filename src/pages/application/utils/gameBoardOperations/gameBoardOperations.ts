@@ -1,23 +1,34 @@
-export const sumTable = (boardToCalculate: number[][]): number[][] => {
-  const nullMatrix = Array.from({ length: boardToCalculate.length }, () =>
+import type { BoardWithPoints } from "../../../../common/types.ts";
+
+interface RowWithPoints {
+  summed: number[];
+  points: number;
+}
+
+export const sumTable = (boardToCalculate: number[][]): BoardWithPoints => {
+  const summedBoard = Array.from({ length: boardToCalculate.length }, () =>
     Array(boardToCalculate.length).fill(0),
   );
 
+  let pointsForMove = 0;
+
   for (let rowIndex = 0; rowIndex < boardToCalculate.length; rowIndex++) {
     const row: number[] = [...boardToCalculate[rowIndex]];
-    const summedRow = sumRow(row);
+    const { summed: summedRow, points } = sumRow(row);
 
-    nullMatrix[rowIndex] = [...summedRow];
+    summedBoard[rowIndex] = [...summedRow];
+    pointsForMove += points;
   }
 
-  return nullMatrix;
+  return { summedBoard, points: pointsForMove };
 };
 
-const sumRow = (rowToSum: number[]): number[] => {
-  const moved = moveNumbers(rowToSum);
-  const summed = sumAdjacentCells(moved);
+const sumRow = (rowToSum: number[]): RowWithPoints => {
+  let moved = moveNumbers(rowToSum);
+  const { summed, points } = sumAdjacentCells(moved);
+  moved = moveNumbers(summed);
 
-  return moveNumbers(summed);
+  return { summed: moved, points };
 };
 
 const moveNumbers = (row: number[]) => {
@@ -45,19 +56,23 @@ const isThereSpaceInRow = (row: number[]): boolean => {
   return false;
 };
 
-const sumAdjacentCells = (row: number[]) => {
+const sumAdjacentCells = (row: number[]): RowWithPoints => {
   const rowToMove = [...row];
+  let points = 0;
 
-  // if (areThereNumbersToSum(rowToMove)) {
   for (let i = rowToMove.length - 1; i >= 0; i--) {
     if (rowToMove[i] === rowToMove[i + 1]) {
       rowToMove[i + 1] = rowToMove[i] * 2;
       rowToMove[i] = 0;
+
+      points += rowToMove[i + 1];
     }
   }
-  // }
 
-  return rowToMove;
+  return {
+    summed: rowToMove,
+    points,
+  };
 };
 
 // const areThereNumbersToSum = (row: number[]): boolean => {

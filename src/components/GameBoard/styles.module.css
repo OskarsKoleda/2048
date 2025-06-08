@@ -1,8 +1,8 @@
 .gameBoard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: .5rem;
+    gap: .3rem;
     padding: 1rem;
     border-radius: 4px;
-    background-color: #7fa922;
+    background-color: rgba(127, 169, 34, 0.44);
 }
