@@ -8,15 +8,6 @@ import { addNewNumbers } from "../utils/gameBoardPopulation/gameBoardPopulation.
 import { moveDown, moveLeft, moveRight, moveUp } from "../utils/gameMoves/gameMoves.ts";
 import type { BoardWithPoints } from "../../../common/types.ts";
 
-// TODO:
-// 1. Add error handling for invalid board states
-// 2. Add game state management (win/lose conditions)
-// 3. Add move validation before performing operations
-// 4. Consider adding animation states
-// 5. Add keyboard event throttling to prevent rapid-fire updates
-
-// #### Consider Move History (Optional)
-
 interface BoardOperations {
   board: number[][];
   setBoard: (board: number[][]) => void;
@@ -26,7 +17,7 @@ interface BoardOperations {
 const useGameControls = ({ board, setBoard, setScore }: BoardOperations) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (!Object.values(VALID_KEYS).includes(e.key)) {
+      if (!Object.values(VALID_KEYS).includes(e.key) || e.repeat) {
         return;
       }
 

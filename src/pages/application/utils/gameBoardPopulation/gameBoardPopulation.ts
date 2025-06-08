@@ -1,6 +1,7 @@
-// TODO: remove magic numbers
+import { BOARD_SIZE } from "../../../../common/constants.ts";
+
 export const generateInitialBoard = () => {
-  const board = Array.from({ length: 4 }, () => Array(4).fill(0));
+  const board = Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(0));
 
   for (let i = 0; i < 2; i++) {
     const [row, col] = getRandomCoords(board);
@@ -21,13 +22,13 @@ export const addNewNumbers = (board: number[][]) => {
 
 // TODO: can be kind of improved
 const getRandomCoords = (currentBoard: number[][]) => {
-  let row: number;
-  let col: number;
+  let rowIndex: number;
+  let colIndex: number;
 
   do {
-    row = Math.floor(Math.random() * 4);
-    col = Math.floor(Math.random() * 4);
-  } while (currentBoard[row][col] !== 0);
+    rowIndex = Math.floor(Math.random() * BOARD_SIZE);
+    colIndex = Math.floor(Math.random() * BOARD_SIZE);
+  } while (currentBoard[rowIndex][colIndex] !== 0);
 
-  return [row, col];
+  return [rowIndex, colIndex];
 };

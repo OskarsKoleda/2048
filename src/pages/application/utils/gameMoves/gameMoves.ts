@@ -3,7 +3,6 @@ import { sumTable } from "../gameBoardOperations/gameBoardOperations.ts";
 import { rotateClockwise, rotateCounterClockwise } from "../matrixOperations/matrixOperations.ts";
 
 export const moveRight = (currentBoard: number[][]) => {
-  console.log("MOVE RIGHT");
   return sumTable(currentBoard);
 };
 

@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { hasBoardChanged, isThereSpaceOnBoard, sumTable } from "./gameBoardOperations.ts";
+import {
+  hasBoardChanged,
+  isThereMoveLeft,
+  isThereSpaceOnBoard,
+  sumTable,
+} from "./gameBoardOperations.ts";
 
 describe("tableOperationsUtils", () => {
   describe("isThereSpaceOnBoard", () => {
@@ -135,6 +140,53 @@ describe("tableOperationsUtils", () => {
         [0, 0, 0],
       ];
       expect(hasBoardChanged(initialBoard, modifiedBoard)).toBe(true);
+    });
+  });
+
+  describe("isThereMoveLeft", () => {
+    it("should return true when there is at least one move available", () => {
+      const board = [
+        [2, 2, 4],
+        [4, 8, 2],
+        [2, 2, 4],
+      ];
+      expect(isThereMoveLeft(board)).toBe(true);
+    });
+
+    it("should return false when the board has no possible moves", () => {
+      const board = [
+        [2, 4, 2],
+        [4, 8, 4],
+        [2, 4, 8],
+      ];
+      expect(isThereMoveLeft(board)).toBe(false);
+    });
+
+    it("should return true when there are empty spaces on the board", () => {
+      const board = [
+        [2, 0, 2],
+        [4, 8, 4],
+        [0, 4, 8],
+      ];
+      expect(isThereMoveLeft(board)).toBe(true);
+    });
+
+    it("should return true when adjacent tiles can be summed along a row", () => {
+      const board = [
+        [2, 2, 4],
+        [4, 8, 16],
+        [2, 4, 8],
+      ];
+      expect(isThereMoveLeft(board)).toBe(true);
+    });
+
+    it("should return true when adjacent tiles can be summed along a column", () => {
+      const board = [
+        [2, 4, 8],
+        [2, 4, 8],
+        [4, 8, 16],
+      ];
+      expect(isThereMoveLeft(board)).toBe(true);
     });
   });
 });
