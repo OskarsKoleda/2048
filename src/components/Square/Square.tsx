@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 type SquareProps = {
   cellValue: number;
@@ -33,8 +33,8 @@ const getColorClass = (value: number): string => {
   }
 };
 
-function Square({ cellValue }: SquareProps) {
+const Square = ({ cellValue }: SquareProps) => {
   return <div className={`${styles.square} ${getColorClass(cellValue)}`}>{cellValue}</div>;
-}
+};
 
 export default Square;

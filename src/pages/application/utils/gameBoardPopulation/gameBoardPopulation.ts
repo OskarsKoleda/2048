@@ -1,4 +1,4 @@
-import { BOARD_SIZE } from "../../../../common/constants.ts";
+import { BOARD_SIZE } from '../../../../common/constants.ts';
 
 export const generateInitialBoard = () => {
   const board = Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(0));

@@ -1,13 +1,13 @@
-import styles from "./styles.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { generateInitialBoard } from "./utils/gameBoardPopulation/gameBoardPopulation.ts";
-import useGameControls from "./hooks/useGameControls.ts";
-import { GameBoard } from "../../components/GameBoard/GameBoard.tsx";
-import { Menu } from "../../components/Menu/Menu.tsx";
-import { Modal } from "../../components/Modal/Modal.tsx";
-import { isThereMoveLeft } from "./utils/gameBoardOperations/gameBoardOperations.ts";
+import { useCallback, useEffect, useState } from 'react';
+import { GameBoard } from '../../components/GameBoard/GameBoard.tsx';
+import { Menu } from '../../components/Menu/Menu.tsx';
+import { Modal } from '../../components/Modal/Modal.tsx';
+import useGameControls from './hooks/useGameControls.ts';
+import { generateInitialBoard } from './utils/gameBoardPopulation/gameBoardPopulation.ts';
+import styles from './styles.module.css';
+import { isThereMoveLeft } from './utils/gameBoardOperations/gameBoardOperations.ts';
 
-function Application() {
+const Application = () => {
   const [board, setBoard] = useState(generateInitialBoard());
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
@@ -40,6 +40,6 @@ function Application() {
       <GameBoard board={board} />
     </>
   );
-}
+};
 
 export default Application;

@@ -1,5 +1,5 @@
-import type { BoardWithPoints } from "../../../../common/types.ts";
-import { rotateClockwise } from "../matrixOperations/matrixOperations.ts";
+import type { BoardWithPoints } from '../../../../common/types.ts';
+import { rotateClockwise } from '../matrixOperations/matrixOperations.ts';
 
 interface RowWithPoints {
   summed: number[];

@@ -1,6 +1,6 @@
-import type { BoardWithPoints } from "../../../../common/types.ts";
-import { sumTable } from "../gameBoardOperations/gameBoardOperations.ts";
-import { rotateClockwise, rotateCounterClockwise } from "../matrixOperations/matrixOperations.ts";
+import type { BoardWithPoints } from '../../../../common/types.ts';
+import { sumTable } from '../gameBoardOperations/gameBoardOperations.ts';
+import { rotateClockwise, rotateCounterClockwise } from '../matrixOperations/matrixOperations.ts';
 
 export const moveRight = (currentBoard: number[][]) => {
   return sumTable(currentBoard);

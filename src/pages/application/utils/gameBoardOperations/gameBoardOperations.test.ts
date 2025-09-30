@@ -1,14 +1,14 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from 'vitest';
 import {
   hasBoardChanged,
   isThereMoveLeft,
   isThereSpaceOnBoard,
   sumTable,
-} from "./gameBoardOperations.ts";
+} from './gameBoardOperations.ts';
 
-describe("tableOperationsUtils", () => {
-  describe("isThereSpaceOnBoard", () => {
-    it("should return true when there is space (0) on the board", () => {
+describe('tableOperationsUtils', () => {
+  describe('isThereSpaceOnBoard', () => {
+    it('should return true when there is space (0) on the board', () => {
       const board = [
         [2, 0, 4],
         [2, 4, 8],
@@ -17,7 +17,7 @@ describe("tableOperationsUtils", () => {
       expect(isThereSpaceOnBoard(board)).toBe(true);
     });
 
-    it("should return false when there is no space on the board", () => {
+    it('should return false when there is no space on the board', () => {
       const board = [
         [2, 4, 2],
         [2, 4, 8],
@@ -27,8 +27,8 @@ describe("tableOperationsUtils", () => {
     });
   });
 
-  describe("sumTable", () => {
-    it("should correctly sum adjacent numbers in a table and calculate points", () => {
+  describe('sumTable', () => {
+    it('should correctly sum adjacent numbers in a table and calculate points', () => {
       const input = [
         [2, 2, 0],
         [2, 2, 4],
@@ -47,7 +47,7 @@ describe("tableOperationsUtils", () => {
       expect(sumTable(input)).toEqual(expected);
     });
 
-    it("should handle empty spaces correctly and calculate points as zero", () => {
+    it('should handle empty spaces correctly and calculate points as zero', () => {
       const input = [
         [0, 0, 2],
         [0, 2, 0],
@@ -66,7 +66,7 @@ describe("tableOperationsUtils", () => {
       expect(sumTable(input)).toEqual(expected);
     });
 
-    it("should calculate points when multiple rows are summed", () => {
+    it('should calculate points when multiple rows are summed', () => {
       const input = [
         [2, 2, 2, 2],
         [4, 4, 0, 0],
@@ -86,8 +86,8 @@ describe("tableOperationsUtils", () => {
     });
   });
 
-  describe("hasBoardChanged", () => {
-    it("should return false when the boards are identical", () => {
+  describe('hasBoardChanged', () => {
+    it('should return false when the boards are identical', () => {
       const initialBoard = [
         [2, 4, 2],
         [4, 8, 2],
@@ -101,7 +101,7 @@ describe("tableOperationsUtils", () => {
       expect(hasBoardChanged(initialBoard, modifiedBoard)).toBe(false);
     });
 
-    it("should return true when the boards are different", () => {
+    it('should return true when the boards are different', () => {
       const initialBoard = [
         [2, 4, 2],
         [4, 8, 2],
@@ -115,7 +115,7 @@ describe("tableOperationsUtils", () => {
       expect(hasBoardChanged(initialBoard, modifiedBoard)).toBe(true);
     });
 
-    it("should return true when a single cell is changed", () => {
+    it('should return true when a single cell is changed', () => {
       const initialBoard = [
         [2, 4, 2],
         [4, 8, 2],
@@ -129,7 +129,7 @@ describe("tableOperationsUtils", () => {
       expect(hasBoardChanged(initialBoard, modifiedBoard)).toBe(true);
     });
 
-    it("should return true when a board is expanded in size", () => {
+    it('should return true when a board is expanded in size', () => {
       const initialBoard = [
         [2, 4],
         [4, 8],
@@ -143,8 +143,8 @@ describe("tableOperationsUtils", () => {
     });
   });
 
-  describe("isThereMoveLeft", () => {
-    it("should return true when there is at least one move available", () => {
+  describe('isThereMoveLeft', () => {
+    it('should return true when there is at least one move available', () => {
       const board = [
         [2, 2, 4],
         [4, 8, 2],
@@ -153,7 +153,7 @@ describe("tableOperationsUtils", () => {
       expect(isThereMoveLeft(board)).toBe(true);
     });
 
-    it("should return false when the board has no possible moves", () => {
+    it('should return false when the board has no possible moves', () => {
       const board = [
         [2, 4, 2],
         [4, 8, 4],
@@ -162,7 +162,7 @@ describe("tableOperationsUtils", () => {
       expect(isThereMoveLeft(board)).toBe(false);
     });
 
-    it("should return true when there are empty spaces on the board", () => {
+    it('should return true when there are empty spaces on the board', () => {
       const board = [
         [2, 0, 2],
         [4, 8, 4],
@@ -171,7 +171,7 @@ describe("tableOperationsUtils", () => {
       expect(isThereMoveLeft(board)).toBe(true);
     });
 
-    it("should return true when adjacent tiles can be summed along a row", () => {
+    it('should return true when adjacent tiles can be summed along a row', () => {
       const board = [
         [2, 2, 4],
         [4, 8, 16],
@@ -180,7 +180,7 @@ describe("tableOperationsUtils", () => {
       expect(isThereMoveLeft(board)).toBe(true);
     });
 
-    it("should return true when adjacent tiles can be summed along a column", () => {
+    it('should return true when adjacent tiles can be summed along a column', () => {
       const board = [
         [2, 4, 8],
         [2, 4, 8],

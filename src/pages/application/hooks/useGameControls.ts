@@ -1,12 +1,12 @@
+import { useCallback, useEffect } from 'react';
+import type { BoardWithPoints } from '../../../common/types.ts';
+import { VALID_KEYS } from '../constants.ts';
 import {
   hasBoardChanged,
   isThereSpaceOnBoard,
-} from "../utils/gameBoardOperations/gameBoardOperations.ts";
-import { useCallback, useEffect } from "react";
-import { VALID_KEYS } from "../constants.ts";
-import { addNewNumbers } from "../utils/gameBoardPopulation/gameBoardPopulation.ts";
-import { moveDown, moveLeft, moveRight, moveUp } from "../utils/gameMoves/gameMoves.ts";
-import type { BoardWithPoints } from "../../../common/types.ts";
+} from '../utils/gameBoardOperations/gameBoardOperations.ts';
+import { addNewNumbers } from '../utils/gameBoardPopulation/gameBoardPopulation.ts';
+import { moveDown, moveLeft, moveRight, moveUp } from '../utils/gameMoves/gameMoves.ts';
 
 interface BoardOperations {
   board: number[][];
@@ -21,7 +21,7 @@ const useGameControls = ({ board, setBoard, setScore }: BoardOperations) => {
         return;
       }
 
-      let gameBoard = board.map((row) => [...row]);
+      const gameBoard = board.map((row) => [...row]);
 
       const moveHandlers: Record<string, (board: number[][]) => BoardWithPoints> = {
         [VALID_KEYS.RIGHT]: moveRight,
@@ -45,9 +45,9 @@ const useGameControls = ({ board, setBoard, setScore }: BoardOperations) => {
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 };
 

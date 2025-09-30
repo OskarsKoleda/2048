@@ -1,7 +1,6 @@
-import styles from "./styles.module.css";
-
-import { type PropsWithChildren } from "react";
-import { createPortal } from "react-dom";
+import { type PropsWithChildren } from 'react';
+import { createPortal } from 'react-dom';
+import styles from './styles.module.css';
 
 type ModalProps = {
   gameOver: boolean;
@@ -9,7 +8,7 @@ type ModalProps = {
   restartGame: () => void;
 } & PropsWithChildren;
 
-export function Modal({ gameOver, onClose, restartGame, children }: ModalProps) {
+export const Modal = ({ gameOver, onClose, restartGame, children }: ModalProps) => {
   return gameOver
     ? createPortal(
         <div className={styles.backdrop}>
@@ -33,4 +32,4 @@ export function Modal({ gameOver, onClose, restartGame, children }: ModalProps) 
         document.body,
       )
     : null;
-}
+};

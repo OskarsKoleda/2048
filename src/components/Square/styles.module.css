@@ -1,72 +1,72 @@
 .square {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
-    font-weight: bold;
-    border-radius: 4px;
-    border: 1px solid #000;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: 1px solid #000;
 }
 
 .value0 {
-    background-color: #2c3e50; /* Dark blue-gray */
+  background-color: #2c3e50; /* Dark blue-gray */
 }
 
 .value2 {
-    background-color: #1abc9c; /* Turquoise */
-    color: #fff;
+  background-color: #1abc9c; /* Turquoise */
+  color: #fff;
 }
 
 .value4 {
-    background-color: #3498db; /* Blue */
-    color: #fff;
+  background-color: #3498db; /* Blue */
+  color: #fff;
 }
 
 .value8 {
-    background-color: #9b59b6; /* Purple */
-    color: #fff;
+  background-color: #9b59b6; /* Purple */
+  color: #fff;
 }
 
 .value16 {
-    background-color: #e74c3c; /* Red */
-    color: #fff;
+  background-color: #e74c3c; /* Red */
+  color: #fff;
 }
 
 .value32 {
-    background-color: #e67e22; /* Orange */
-    color: #fff;
+  background-color: #e67e22; /* Orange */
+  color: #fff;
 }
 
 .value64 {
-    background-color: #f1c40f; /* Yellow */
-    color: #2c3e50;
+  background-color: #f1c40f; /* Yellow */
+  color: #2c3e50;
 }
 
 .value128 {
-    background-color: #2ecc71; /* Emerald */
-    color: #fff;
+  background-color: #2ecc71; /* Emerald */
+  color: #fff;
 }
 
 .value256 {
-    background-color: #16a085; /* Green Sea */
-    color: #fff;
+  background-color: #16a085; /* Green Sea */
+  color: #fff;
 }
 
 .value512 {
-    background-color: #8e44ad; /* Wisteria */
-    color: #fff;
+  background-color: #8e44ad; /* Wisteria */
+  color: #fff;
 }
 
 .value1024 {
-    background-color: #c0392b; /* Pomegranate */
-    color: #fff;
-    font-size: 20px;
+  background-color: #c0392b; /* Pomegranate */
+  color: #fff;
+  font-size: 20px;
 }
 
 .value2048 {
-    background-color: #d35400; /* Pumpkin */
-    color: #fff;
-    font-size: 20px;
+  background-color: #d35400; /* Pumpkin */
+  color: #fff;
+  font-size: 20px;
 }

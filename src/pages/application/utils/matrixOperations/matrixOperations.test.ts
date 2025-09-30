@@ -1,10 +1,10 @@
-import { describe, expect, it } from "vitest";
-import { rotateClockwise, rotateCounterClockwise } from "./matrixOperations.ts";
+import { describe, expect, it } from 'vitest';
+import { rotateClockwise, rotateCounterClockwise } from './matrixOperations.ts';
 
 // AI-generated tests
-describe("matrixUtils", () => {
-  describe("rotateClockwise", () => {
-    it("should rotate a 2x2 matrix clockwise", () => {
+describe('matrixUtils', () => {
+  describe('rotateClockwise', () => {
+    it('should rotate a 2x2 matrix clockwise', () => {
       const input = [
         [1, 2],
         [3, 4],
@@ -16,7 +16,7 @@ describe("matrixUtils", () => {
       expect(rotateClockwise(input)).toEqual(expected);
     });
 
-    it("should rotate a 3x3 matrix clockwise", () => {
+    it('should rotate a 3x3 matrix clockwise', () => {
       const input = [
         [1, 2, 3],
         [4, 5, 6],
@@ -30,7 +30,7 @@ describe("matrixUtils", () => {
       expect(rotateClockwise(input)).toEqual(expected);
     });
 
-    it("should rotate a matrix with zeros clockwise", () => {
+    it('should rotate a matrix with zeros clockwise', () => {
       const input = [
         [0, 2, 0],
         [0, 5, 0],
@@ -44,7 +44,7 @@ describe("matrixUtils", () => {
       expect(rotateClockwise(input)).toEqual(expected);
     });
 
-    it("should preserve the original matrix", () => {
+    it('should preserve the original matrix', () => {
       const input = [
         [1, 2],
         [3, 4],
@@ -58,8 +58,8 @@ describe("matrixUtils", () => {
     });
   });
 
-  describe("rotateCounterClockwise", () => {
-    it("should rotate a 2x2 matrix counter-clockwise", () => {
+  describe('rotateCounterClockwise', () => {
+    it('should rotate a 2x2 matrix counter-clockwise', () => {
       const input = [
         [1, 2],
         [3, 4],
@@ -71,7 +71,7 @@ describe("matrixUtils", () => {
       expect(rotateCounterClockwise(input)).toEqual(expected);
     });
 
-    it("should rotate a 3x3 matrix counter-clockwise", () => {
+    it('should rotate a 3x3 matrix counter-clockwise', () => {
       const input = [
         [1, 2, 3],
         [4, 5, 6],
@@ -85,7 +85,7 @@ describe("matrixUtils", () => {
       expect(rotateCounterClockwise(input)).toEqual(expected);
     });
 
-    it("should rotate a matrix with zeros counter-clockwise", () => {
+    it('should rotate a matrix with zeros counter-clockwise', () => {
       const input = [
         [0, 2, 0],
         [0, 5, 0],
@@ -99,7 +99,7 @@ describe("matrixUtils", () => {
       expect(rotateCounterClockwise(input)).toEqual(expected);
     });
 
-    it("should preserve the original matrix", () => {
+    it('should preserve the original matrix', () => {
       const input = [
         [1, 2],
         [3, 4],
@@ -113,8 +113,8 @@ describe("matrixUtils", () => {
     });
   });
 
-  describe("rotation relationships", () => {
-    it("should return original matrix after four clockwise rotations", () => {
+  describe('rotation relationships', () => {
+    it('should return original matrix after four clockwise rotations', () => {
       const input = [
         [1, 2, 3],
         [4, 5, 6],
@@ -129,7 +129,7 @@ describe("matrixUtils", () => {
       expect(result).toEqual(input);
     });
 
-    it("should return original matrix after four counter-clockwise rotations", () => {
+    it('should return original matrix after four counter-clockwise rotations', () => {
       const input = [
         [1, 2, 3],
         [4, 5, 6],
@@ -144,7 +144,7 @@ describe("matrixUtils", () => {
       expect(result).toEqual(input);
     });
 
-    it("clockwise rotation should be inverse of counter-clockwise", () => {
+    it('clockwise rotation should be inverse of counter-clockwise', () => {
       const input = [
         [1, 2, 3],
         [4, 5, 6],
