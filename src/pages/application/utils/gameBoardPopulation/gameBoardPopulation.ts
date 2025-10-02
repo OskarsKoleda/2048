@@ -12,6 +12,7 @@ export const generateInitialBoard = () => {
   return board;
 };
 
+// TODO: make immutable
 export const addNewNumbers = (board: number[][]) => {
   const [row, col] = getRandomCoords(board);
 

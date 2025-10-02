@@ -1,8 +1,9 @@
+import React from 'react';
 import styles from './styles.module.css';
 
-type SquareProps = {
+interface SquareProps {
   cellValue: number;
-};
+}
 
 const getColorClass = (value: number): string => {
   switch (value) {
@@ -37,4 +38,4 @@ const Square = ({ cellValue }: SquareProps) => {
   return <div className={`${styles.square} ${getColorClass(cellValue)}`}>{cellValue}</div>;
 };
 
-export default Square;
+export default React.memo(Square);

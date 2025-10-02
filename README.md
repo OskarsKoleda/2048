@@ -1,1 +1,3 @@
-# 2048 game project on React. For Training. Hopefully without AI.
+# 2048 game project on React. For Training.
+
+<!-- TODO: add instructions -->

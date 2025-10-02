@@ -5,7 +5,8 @@ interface GameBoardProps {
   board: number[][];
 }
 
-export const GameBoard = ({ board }: GameBoardProps) => {
+// TODO: Consider optimizing GameBoard by memoizing the board rendering or improving performance for large boards.
+const GameBoard = ({ board }: GameBoardProps) => {
   return (
     <div className={styles.gameBoard}>
       {board.flat().map((num, index) => (
@@ -14,3 +15,5 @@ export const GameBoard = ({ board }: GameBoardProps) => {
     </div>
   );
 };
+
+export default GameBoard;
