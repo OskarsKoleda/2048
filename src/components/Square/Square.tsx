@@ -3,11 +3,11 @@ import { getColorClass } from './getColorClass';
 import styles from './styles.module.css';
 
 interface SquareProps {
-  cellValue: number;
+  squareValue: number;
 }
 
-const Square = ({ cellValue }: SquareProps) => {
-  return <div className={`${styles.square} ${getColorClass(cellValue)}`}>{cellValue}</div>;
+const Square = ({ squareValue }: SquareProps) => {
+  return <div className={`${styles.square} ${getColorClass(squareValue)}`}>{squareValue}</div>;
 };
 
 export default React.memo(Square);

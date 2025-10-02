@@ -5,7 +5,6 @@ interface MenuProps {
   resetBoard: () => void;
 }
 
-// TODO: Refactor Menu component to improve accessibility and styling, and consider separating button and score display into smaller components if needed.
 const Menu = ({ score, resetBoard }: MenuProps) => {
   return (
     <div className={styles.menu}>

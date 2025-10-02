@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import GameBoard from '../../components/GameBoard/GameBoard.tsx';
-import Menu from '../../components/Menu/Menu.tsx';
 import Modal from '../../components/Modal/Modal.tsx';
 import useGameControls from '../../hooks/useGameControls.ts';
+import GameBoard from './GameBoard/GameBoard.tsx';
+import Menu from './Menu/Menu.tsx';
 import styles from './styles.module.css';
 import { isThereMoveLeft } from './utils/gameBoardOperations/gameBoardOperations.ts';
 import { generateInitialBoard } from './utils/gameBoardPopulation/gameBoardPopulation.ts';

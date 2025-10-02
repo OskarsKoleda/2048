@@ -3,12 +3,12 @@ import { createPortal } from 'react-dom';
 import styles from './styles.module.css';
 
 interface ModalProps extends PropsWithChildren {
+  actionButtonText: string;
   onClose: () => void;
   onAction: () => void;
-  actionButtonText: string;
 }
 
-const Modal = ({ onClose, onAction, actionButtonText, children }: ModalProps) => {
+const Modal = ({ actionButtonText, onClose, onAction, children }: ModalProps) => {
   return createPortal(
     <div className={styles.backdrop}>
       <div className={styles.modal}>

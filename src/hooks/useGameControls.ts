@@ -1,17 +1,17 @@
 import { useCallback, useEffect } from 'react';
 import type { BoardWithPoints } from '../common/types.ts';
-import { VALID_KEYS } from '../pages/application/constants.ts';
+import { VALID_KEYS } from '../pages/Application/constants.ts';
 import {
   hasBoardChanged,
   isThereSpaceOnBoard,
-} from '../pages/application/utils/gameBoardOperations/gameBoardOperations.ts';
-import { addNewNumbers } from '../pages/application/utils/gameBoardPopulation/gameBoardPopulation.ts';
+} from '../pages/Application/utils/gameBoardOperations/gameBoardOperations.ts';
+import { addNewNumbers } from '../pages/Application/utils/gameBoardPopulation/gameBoardPopulation.ts';
 import {
   moveDown,
   moveLeft,
   moveRight,
   moveUp,
-} from '../pages/application/utils/gameMoves/gameMoves.ts';
+} from '../pages/Application/utils/gameMoves/gameMoves.ts';
 
 interface BoardOperations {
   board: number[][];

@@ -1,5 +1,5 @@
 import './App.css';
-import Application from './pages/application/Application';
+import Application from './pages/Application/Application';
 
 const App = () => {
   return <Application />;

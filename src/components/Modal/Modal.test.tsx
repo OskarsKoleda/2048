@@ -7,9 +7,9 @@ const mockOnClose = vitest.fn();
 const mockOnAction = vitest.fn();
 
 const props = {
+  actionButtonText: 'Test Modal',
   onClose: mockOnClose,
   onAction: mockOnAction,
-  actionButtonText: 'Test Modal',
 };
 
 describe('Modal', () => {
