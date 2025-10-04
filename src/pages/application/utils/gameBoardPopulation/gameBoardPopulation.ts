@@ -1,6 +1,6 @@
 import { BOARD_SIZE } from '../../../../common/constants.ts';
 
-export const generateInitialBoard = () => {
+export const generateInitialBoard = (): number[][] => {
   const board = Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(0));
 
   for (let i = 0; i < 2; i++) {
@@ -12,13 +12,13 @@ export const generateInitialBoard = () => {
   return board;
 };
 
-// TODO: make immutable
-export const addNewNumbers = (board: number[][]) => {
+export const addNewNumbers = (board: number[][]): number[][] => {
   const [row, col] = getRandomCoords(board);
+  const newBoard = board.map((rowArr) => [...rowArr]);
 
-  board[row][col] = Math.floor(Math.random() * 10) === 4 ? 4 : 2;
+  newBoard[row][col] = Math.floor(Math.random() * 10) === 4 ? 4 : 2;
 
-  return board;
+  return newBoard;
 };
 
 // TODO: can be kind of improved

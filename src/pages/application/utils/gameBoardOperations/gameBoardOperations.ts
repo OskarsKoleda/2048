@@ -1,3 +1,4 @@
+import { BOARD_SIZE } from '../../../../common/constants.ts';
 import type { BoardWithPoints } from '../../../../common/types.ts';
 import { rotateClockwise } from '../matrixOperations/matrixOperations.ts';
 
@@ -9,7 +10,7 @@ interface RowWithPoints {
 export const isThereMoveLeft = (board: number[][]): boolean => {
   let boardToRotate = board.map((row) => [...row]);
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < BOARD_SIZE; i++) {
     const thereIsPlaceToMove = boardToRotate.some((row) => canRowBeMoved(row));
 
     if (thereIsPlaceToMove) {
