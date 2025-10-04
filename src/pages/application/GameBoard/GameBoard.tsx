@@ -9,9 +9,9 @@ interface GameBoardProps {
 const GameBoard = ({ board }: GameBoardProps) => {
   return (
     <div className={styles.gameBoard}>
-      {board.flat().map((num, index) => (
-        <Square key={`${num}-${index}`} squareValue={num} />
-      ))}
+      {board.map((row, rowIdx) =>
+        row.map((num, colIdx) => <Square key={`${rowIdx}-${colIdx}`} squareValue={num} />),
+      )}
     </div>
   );
 };
