@@ -6,82 +6,82 @@ exports[`GameBoard > renders correctly 1`] = `
     class="_gameBoard_6ae2ef"
   >
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value2_59a001"
+      class="_square_59a001 _value2_59a001 "
     >
       2
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value2_59a001"
+      class="_square_59a001 _value2_59a001 "
     >
       2
     </div>
     <div
-      class="_square_59a001 _value4_59a001"
+      class="_square_59a001 _value4_59a001 "
     >
       4
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value4_59a001"
+      class="_square_59a001 _value4_59a001 "
     >
       4
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value8_59a001"
+      class="_square_59a001 _value8_59a001 "
     >
       8
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value8_59a001"
+      class="_square_59a001 _value8_59a001 "
     >
       8
     </div>
     <div
-      class="_square_59a001 _value16_59a001"
+      class="_square_59a001 _value16_59a001 "
     >
       16
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
     <div
-      class="_square_59a001 _value16_59a001"
+      class="_square_59a001 _value16_59a001 "
     >
       16
     </div>
     <div
-      class="_square_59a001 _value0_59a001"
+      class="_square_59a001 _value0_59a001 "
     >
       0
     </div>
